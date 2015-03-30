@@ -8,23 +8,91 @@ Copyright (C) 2014 ARM Ltd and ARM Germany GmbH. All rights reserved.
 License Information: zz zz, zz, LIC=UB401-CJWNK-PFVIX-H4J0S-AMN34-549SL
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: <unknown>
-Toolchain Path:  C:\Keil_v5\ARM\ARMCC\bin\
+Toolchain:       MDK-ARM Professional  Version: 5.12.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.05 (build 41)
 Assembler:       Armasm.exe V5.05 (build 41)
 Linker/Locator:  ArmLink.exe V5.05 (build 41)
 Library Manager: ArmAr.exe V5.05 (build 41)
 Hex Converter:   FromElf.exe V5.05 (build 41)
-CPU DLL:         SARMCM3.DLL
-Dialog DLL:      DARMSTM.DLL
+CPU DLL:         SARMCM3.DLL V5.12.0.0
+Dialog DLL:      DARMSTM.DLL V1.65.0.0
     Target DLL: Segger\JL2CM3.dll
-Dialog DLL:      TARMSTM.DLL
+Dialog DLL:      TARMSTM.DLL V1.64.0.0
  
 <h2>Project:</h2>
 E:\sync\school_work\USER\ATKDCR.uvproj
-Project File Date:  01/06/2015
+Project File Date:  03/26/2015
 
 <h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+main.c(26): warning:  #550-D: variable "k" was set but never used
+        unsigned int i=0,j=0,k=0,t=0,b=0;               
+main.c(26): warning:  #177-D: variable "b" was declared but never referenced
+        unsigned int i=0,j=0,k=0,t=0,b=0;               
+main.c(28): warning:  #177-D: variable "res" was declared but never referenced
+        u8 res[10];
+main.c(29): warning:  #177-D: variable "key" was declared but never referenced
+        u8 key;             
+main.c(31): warning:  #177-D: variable "mode" was declared but never referenced
+        u8 mode=4;      //默认是混合模式                    
+main.c(50): warning:  #177-D: label "RESTART" was declared but never referenced
+  RESTART:
+main.c: 6 warnings, 0 errors
+linking...
+Program Size: Code=66326 RO-data=38638 RW-data=244 ZI-data=260020  
+FromELF: creating hex file...
+"..\OBJ\ATKNCR.axf" - 0 Error(s), 6 Warning(s).
+Load "..\\OBJ\\ATKNCR.axf" 
+Set JLink Project File to "E:\sync\school_work\USER\JLinkSettings.ini"
+* JLink Info: Device "STM32F103ZE" selected (512 KB flash, 64 KB RAM).
+ 
+JLink info:
+------------
+DLL: V4.91b, compiled Sep 15 2014 09:17:56
+Firmware: J-Link ARM V8 compiled Jul 17 2014 12:31:18
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103ZE
+VTarget = 3.293V
+State of Pins: 
+TCK: 0, TDI: 1, TDO: 1, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
 </pre>
 </body>
 </html>
+tchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Can not read register 5 (R5) while CPU is running
+***JLink Error: Can not read register 6 (R6) while CPU is running
+***JLink Error: Can not read register 7 (R7) while CPU is running
+***JLink Error: Can not read register 8 (R8) while CPU is running
+Programming Done.
+Verify OK.
+Application running ...

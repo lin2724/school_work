@@ -28,3 +28,5 @@
 ..\obj\main.o: ..\TEXT\text.h
 ..\obj\main.o: ..\TEXT\fontupd.h
 ..\obj\main.o: ..\ATKNCR\atk_ncr.h
+..\obj\main.o: write.h
+..\obj\main.o: method.h
