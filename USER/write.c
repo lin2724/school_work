@@ -152,11 +152,17 @@ void WriteSignal(unsigned int pox,unsigned int poy,char* dat)
 {
 	atk_ncr_point* buf = (atk_ncr_point*)dat;
 	int i;
+	int start=0;
 	MovePoint(pox,poy);
 	for(i=0;i<MAXDOT;i++)
 	{
 		if(buf->x==0 && buf->y==0){PenUpDown(UP);buf++;continue;}
-		if(buf->x==1 && buf->y==1){PenUpDown(DOWN);buf++;continue;}
+		if(buf->x==1 && buf->y==1){start=1;buf++;continue;}
+		if(start)
+		{
+			MovePoint(buf->x,buf->y);
+			PenUpDown(DOWN);
+		}
 		MovePoint(buf->x,buf->y);
 		buf++;
 //		if(!buf->x&&!buf->y)return;
