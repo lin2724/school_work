@@ -2,6 +2,8 @@
 #include "atk_ncr.h"
 #include "lcd.h"
 #include "write.h"
+#include "moto.h"
+#include "delay.h"
 
 
 
@@ -37,17 +39,19 @@ void Xmoto(int dir, int step)
 		if(!WriteEn)break;
 		if(dir>0)
 			{
-				
+//				xmotostep(1, 1);
 				if(CurPointX+i>XMAX){LCD_DrawPoint(XMAX,CurPointY);CurPointX=XMAX;return;}
 				LCD_DrawPoint(CurPointX+i,CurPointY);
 			}
 		else 
 			{
+//				xmotostep(0, 1);
 				if(CurPointX<=i){LCD_DrawPoint(0,CurPointY);CurPointX=0;return;}
 				LCD_DrawPoint(CurPointX-i,CurPointY);
 			}
 		
 	}
+	xmotostep(dir, step);
 	
 	if(dir>0){CurPointX+=step;}
 	else {CurPointX-=step;}
@@ -153,11 +157,15 @@ void WriteSignal(unsigned int pox,unsigned int poy,char* dat)
 	atk_ncr_point* buf = (atk_ncr_point*)dat;
 	int i;
 	int start=0;
+	int empty=0;
 	MovePoint(pox,poy);
 	for(i=0;i<MAXDOT;i++)
 	{
-		if(buf->x==0 && buf->y==0){PenUpDown(UP);buf++;continue;}
-		if(buf->x==1 && buf->y==1){start=1;buf++;continue;}
+		if(empty>10)break;
+		delay_ms(100);
+		if(buf->x==0 && buf->y==0){PenUpDown(UP);buf++;empty++;continue;}
+		if(buf->x==1 && buf->y==1){start=1;buf++;empty=0;continue;}
+		
 		if(start)
 		{
 			MovePoint(buf->x,buf->y);

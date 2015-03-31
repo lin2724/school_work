@@ -14,6 +14,7 @@
 
 #include "write.h"
 #include "method.h"
+#include "moto.h"
 //ALIENTEK战舰STM32开发板实验46
 //手写识别 实验  
 //技术支持：www.openedv.com
@@ -57,6 +58,19 @@ RESTART:
  	POINT_COLOR=BLUE;      
 	Show_Str(96,207,200,16,"手写区",16,0);	 
 	tcnt=100;
+	 moto_init();
+//	while(1)
+//	{
+//		key=KEY_Scan(0);
+//		if(key==KEY_LEFT)
+//		{
+//			xmotostep(0, 20);
+//		}
+//		if(key==KEY_RIGHT)	
+//		{
+//			xmotostep(1, 20);
+//		}
+//	}
 	while(1)
 	{
 //		key=KEY_Scan(0);

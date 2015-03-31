@@ -17,3 +17,5 @@
 ..\obj\write.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\write.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\write.o: write.h
+..\obj\write.o: moto.h
+..\obj\write.o: ..\SYSTEM\delay\delay.h

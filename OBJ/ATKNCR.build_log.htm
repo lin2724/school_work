@@ -26,11 +26,24 @@ Project File Date:  03/30/2015
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling write.c...
+compiling main.c...
+main.c(27): warning:  #550-D: variable "k" was set but never used
+        unsigned int i=0,j=0,k=0,t=0,b=0;               
+main.c(27): warning:  #177-D: variable "b" was declared but never referenced
+        unsigned int i=0,j=0,k=0,t=0,b=0;               
+main.c(29): warning:  #177-D: variable "res" was declared but never referenced
+        u8 res[10];
+main.c(30): warning:  #177-D: variable "key" was declared but never referenced
+        u8 key;             
+main.c(32): warning:  #177-D: variable "mode" was declared but never referenced
+        u8 mode=4;      //默认是混合模式                    
+main.c(51): warning:  #177-D: label "RESTART" was declared but never referenced
+  RESTART:
+main.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=66354 RO-data=38638 RW-data=244 ZI-data=260020  
+Program Size: Code=66534 RO-data=38638 RW-data=244 ZI-data=260020  
 FromELF: creating hex file...
-"..\OBJ\ATKNCR.axf" - 0 Error(s), 0 Warning(s).
+"..\OBJ\ATKNCR.axf" - 0 Error(s), 6 Warning(s).
 Load "..\\OBJ\\ATKNCR.axf" 
 Set JLink Project File to "E:\sync\school_work\USER\JLinkSettings.ini"
 * JLink Info: Device "STM32F103ZE" selected (512 KB flash, 64 KB RAM).
@@ -66,6 +79,15 @@ Erase Done.
 Programming Done.
 Verify OK.
 Application running ...
-</pre>
-</body>
-</html>
+et = 3.293V
+State of Pins: 
+TCK: 0, TDI: 1, TDO: 1, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...

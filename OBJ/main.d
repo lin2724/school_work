@@ -30,3 +30,4 @@
 ..\obj\main.o: ..\ATKNCR\atk_ncr.h
 ..\obj\main.o: write.h
 ..\obj\main.o: method.h
+..\obj\main.o: moto.h
