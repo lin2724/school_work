@@ -4,6 +4,7 @@
 #include "write.h"
 #include "moto.h"
 #include "delay.h"
+#include "key.h"
 
 
 
@@ -158,11 +159,26 @@ void WriteSignal(unsigned int pox,unsigned int poy,char* dat)
 	int i;
 	int start=0;
 	int empty=0;
+	int delay_arg=100;
+	int key;
+	int lastx=0,lasty=0;
 	MovePoint(pox,poy);
 	for(i=0;i<MAXDOT;i++)
 	{
+		key=KEY_Scan(0);
+		if(key==KEY_LEFT&&delay_arg>20)
+		{
+			delay_arg-=20;
+		}
+		if(key==KEY_RIGHT)	
+		{
+			delay_arg+=20;
+		}
+		
 		if(empty>10)break;
-		delay_ms(100);
+		
+		
+		delay_ms(delay_arg);
 		if(buf->x==0 && buf->y==0){PenUpDown(UP);buf++;empty++;continue;}
 		if(buf->x==1 && buf->y==1){start=1;buf++;empty=0;continue;}
 		
@@ -171,7 +187,17 @@ void WriteSignal(unsigned int pox,unsigned int poy,char* dat)
 			MovePoint(buf->x,buf->y);
 			PenUpDown(DOWN);
 		}
+		
+		if( MOD((signed int)(buf->x-lastx))<10 && MOD((signed int)(buf->y-lasty))<10)
+		{
+			buf++;i++;
+		}
 		MovePoint(buf->x,buf->y);
+		if(WriteEn)
+		{
+		lastx = buf->x;
+		lastx = buf->x;
+		}
 		buf++;
 //		if(!buf->x&&!buf->y)return;
 	}

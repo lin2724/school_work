@@ -57,7 +57,7 @@ RESTART:
 	LCD_DrawRectangle(19,114,220,315);
  	POINT_COLOR=BLUE;      
 	Show_Str(96,207,200,16,"手写区",16,0);	 
-	tcnt=100;
+	tcnt=1;
 	 moto_init();
 //	while(1)
 //	{
@@ -70,6 +70,26 @@ RESTART:
 //		{
 //			xmotostep(1, 20);
 //		}
+//		
+//		if(key==KEY_UP)	
+//		{
+//			while(1)
+//			{
+//			xmotostep(0, 20);
+//			key=KEY_Scan(0);
+//			if(key==KEY_UP)break;
+//			}
+//		}
+//		
+//		if(key==KEY_DOWN)	
+//		{
+//			while(1)
+//			{
+//			xmotostep(1, 20);
+//			key=KEY_Scan(0);
+//			if(key==KEY_DOWN)break;
+//			}
+//		}
 //	}
 	while(1)
 	{
@@ -80,28 +100,7 @@ RESTART:
 //			LCD_Clear(WHITE); 
 //			goto RESTART;	//重新加载界面
 //		}
-//		if(key==KEY_RIGHT)	
-//		{
-//			LCD_Fill(20,115,219,314,WHITE);//清除当前显示
-//			mode++;
-//			if(mode>4)mode=1;
-//			switch(mode)
-//			{
-//				case 1:
-//					Show_Str(80,207,200,16,"仅识别数字",16,0);	
-//					break;	 	    
-//				case 2:
-//					Show_Str(64,207,200,16,"仅识别大写字母",16,0);	
-//					break;	 	    
-//				case 3:
-//					Show_Str(64,207,200,16,"仅识别小写字母",16,0);	
-//					break;	 	    
-//				case 4:
-//					Show_Str(88,207,200,16,"全部识别",16,0);	
-//					break;	 
-//			}
-//			tcnt=100;
-//		}		   
+  
  		tp_dev.scan(0);//扫描
  		if(tp_dev.sta&TP_PRES_DOWN)//有按键被按下
 		{
@@ -116,7 +115,9 @@ RESTART:
  			tcnt=0;//松开时的计数器清空 	 		    
 			if((tp_dev.x[0]<220&&tp_dev.x[0]>=20)&&(tp_dev.y[0]<315&&tp_dev.y[0]>=115))
 			{			 
-				TP_Draw_Big_Point(tp_dev.x[0],tp_dev.y[0],BLUE);//画图 
+				//TP_Draw_Big_Point(tp_dev.x[0],tp_dev.y[0],BLUE);//画图 
+				POINT_COLOR=BLUE;
+				LCD_DrawPoint(tp_dev.x[0],tp_dev.y[0]);
 				if(pcnt<MAXDOT)//总点数少于200
 				{
 					if(pcnt>1)
@@ -166,7 +167,7 @@ RESTART:
 			delay_ms(10);	 // delay_ms(10)
 			//延时识别
 			i++;	 	    
-			if(tcnt==40)
+			if(tcnt>=40)
 			{
 				if(pcnt)//有有效的输入		 
 				{
@@ -174,13 +175,20 @@ RESTART:
 					printf("总点数:%d\r\n",pcnt);
 					WriteSignal(READ_BUF[1].x,READ_BUF[1].y,(char*)READ_BUF);
 					MemClear((char*) READ_BUF, sizeof(READ_BUF));
-//					alientek_ncr(READ_BUF,pcnt,6,mode,(char*)res);
-//					printf("识别结果:%s\r\n",res);
-					pcnt=0;	 			    			   
-//	  			POINT_COLOR=BLUE;//设置画笔蓝色
-//		 			LCD_ShowString(60+72,90,200,16,16,res);	    
+
+					pcnt=0;
+					tcnt=1;					
+ 
+				while(1)
+					{
+
+					key=KEY_Scan(0);
+					if(key==KEY_DOWN)break;
+					}
+					
 				}else tcnt=1;
-				delay_ms(5000);
+//				delay_ms(5000);
+				
 				LCD_Fill(20,115,219,314,WHITE);
 			} 
 		}  

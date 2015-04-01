@@ -19,3 +19,4 @@
 ..\obj\write.o: write.h
 ..\obj\write.o: moto.h
 ..\obj\write.o: ..\SYSTEM\delay\delay.h
+..\obj\write.o: ..\HARDWARE\KEY\key.h

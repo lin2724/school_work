@@ -22,28 +22,14 @@ Dialog DLL:      TARMSTM.DLL V1.64.0.0
  
 <h2>Project:</h2>
 E:\sync\school_work\USER\ATKDCR.uvproj
-Project File Date:  03/30/2015
+Project File Date:  03/31/2015
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling main.c...
-main.c(27): warning:  #550-D: variable "k" was set but never used
-        unsigned int i=0,j=0,k=0,t=0,b=0;               
-main.c(27): warning:  #177-D: variable "b" was declared but never referenced
-        unsigned int i=0,j=0,k=0,t=0,b=0;               
-main.c(29): warning:  #177-D: variable "res" was declared but never referenced
-        u8 res[10];
-main.c(30): warning:  #177-D: variable "key" was declared but never referenced
-        u8 key;             
-main.c(32): warning:  #177-D: variable "mode" was declared but never referenced
-        u8 mode=4;      //默认是混合模式                    
-main.c(51): warning:  #177-D: label "RESTART" was declared but never referenced
-  RESTART:
-main.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=66534 RO-data=38638 RW-data=244 ZI-data=260020  
+Program Size: Code=66674 RO-data=38638 RW-data=244 ZI-data=260020  
 FromELF: creating hex file...
-"..\OBJ\ATKNCR.axf" - 0 Error(s), 6 Warning(s).
+"..\OBJ\ATKNCR.axf" - 0 Error(s), 0 Warning(s).
 Load "..\\OBJ\\ATKNCR.axf" 
 Set JLink Project File to "E:\sync\school_work\USER\JLinkSettings.ini"
 * JLink Info: Device "STM32F103ZE" selected (512 KB flash, 64 KB RAM).
@@ -79,7 +65,23 @@ Erase Done.
 Programming Done.
 Verify OK.
 Application running ...
-et = 3.293V
+</pre>
+</body>
+</html>
+iling write.c...
+"write.c" - 0 Error(s), 0 Warning(s).
+ID 0x1BA01477
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: TPIU fitted.
+* JLink Info: ETM fitted.
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103ZE
+VTarget = 3.293V
 State of Pins: 
 TCK: 0, TDI: 1, TDO: 1, TMS: 1, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
@@ -88,6 +90,12 @@ Watchpoints:          4
 JTAG speed: 4000 kHz
  
 Erase Done.
+***JLink Error: Can not read register 0 (R0) while CPU is running
+***JLink Error: Can not read register 1 (R1) while CPU is running
+***JLink Error: Can not read register 2 (R2) while CPU is running
+***JLink Error: Can not read register 3 (R3) while CPU is running
+***JLink Error: Can not read register 4 (R4) while CPU is running
+***JLink Error: Can not read register 5 (R5) while CPU is running
 Programming Done.
 Verify OK.
 Application running ...
